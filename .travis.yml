@@ -1,0 +1,16 @@
+osx_image: xcode7
+language: objective-c
+
+cache:
+  - bundler
+  - cocoapods
+
+before_install:
+  - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+  - open -a "Simulator" --args -CurrentDeviceUDID A90A43D5-F1D3-4475-BFF5-BC5AA2077C64
+
+install:
+  - bundle install
+
+script:
+  set -o pipefail && xcodebuild -destination "OS=9.0,name=iPhone 6" -scheme ExampleApp -workspace "ExampleApp.xcworkspace" build test | xcpretty --color --test
