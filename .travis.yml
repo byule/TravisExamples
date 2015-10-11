@@ -13,4 +13,4 @@ install:
   - bundle install
 
 script:
-  set -o pipefail && xcodebuild -destination "OS=9.0,name=iPhone 6" -scheme ExampleApp -workspace "ExampleApp.xcworkspace" build test | xcpretty --color --test
+  set -o pipefail && xcodebuild -destination "OS=9.0,name=iPhone 6" -scheme ExampleApp -workspace "ExampleApp.xcworkspace" clean build test | xcpretty --color
